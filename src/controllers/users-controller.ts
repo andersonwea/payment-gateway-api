@@ -2,16 +2,13 @@ import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
 import { pool } from '../lib/database'
+import { User } from '../@types'
 
 const userSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string(),
 })
-
-type User = z.infer<typeof userSchema> & {
-  id: string
-}
 
 export async function createUser(request: Request, response: Response) {
   const _user = userSchema.safeParse(request.body)
