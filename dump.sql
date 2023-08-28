@@ -5,3 +5,8 @@ CREATE TABLE users (
   password TEXT NOT NULL
 );
 
+CREATE TABLE products (
+	id SERIAL PRIMARY KEY,
+  description TEXT NOT NULL,
+  price INT NOT NULL
+);
