@@ -38,3 +38,17 @@ export async function createProduct(request: Request, response: Response) {
     return response.status(500).json({ message: 'Internal Error.' })
   }
 }
+
+export async function listProduts(request: Request, response: Response) {
+  try {
+    const query = `
+      SELECT * FROM products
+    `
+
+    const products = await pool.query<Product[]>(query)
+
+    return response.json(products.rows)
+  } catch (err: any) {
+    return response.status(500).json({ message: 'Internal Error.' })
+  }
+}
