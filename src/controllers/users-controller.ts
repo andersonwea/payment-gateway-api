@@ -9,7 +9,9 @@ const userSchema = z.object({
   password: z.string(),
 })
 
-type User = z.infer<typeof userSchema>
+type User = z.infer<typeof userSchema> & {
+  id: string
+}
 
 export async function createUser(request: Request, response: Response) {
   const _user = userSchema.safeParse(request.body)
