@@ -30,7 +30,7 @@ export async function checkUserCredentials(
     }
 
     const query = `
-      SELECT id, name, email 
+      SELECT id, name, email, role 
       FROM users
       WHERE id = $1
     `

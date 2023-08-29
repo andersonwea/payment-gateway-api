@@ -50,6 +50,7 @@ export async function auth(request: Request, response: Response) {
     const token = jwt.sign(
       {
         id: user.rows[0].id,
+        role: user.rows[0].role,
       },
       env.JWT_SECRET,
       {

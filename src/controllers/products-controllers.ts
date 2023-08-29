@@ -12,6 +12,12 @@ type Product = z.infer<typeof productSchema> & {
 }
 
 export async function createProduct(request: Request, response: Response) {
+  const { role } = request.user
+
+  if (role !== 'admin') {
+    return response.status(403).json({ message: 'Unauthorized.' })
+  }
+
   const _product = productSchema.safeParse(request.body)
 
   if (_product.success === false) {
