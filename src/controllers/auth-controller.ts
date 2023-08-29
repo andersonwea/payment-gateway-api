@@ -61,11 +61,11 @@ export async function auth(request: Request, response: Response) {
 
     return response
       .cookie('token', token, {
-        maxAge: 60 * 60 * 24 * 7, // 7 days
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
         path: '/',
       })
       .json(userDetails)
-  } catch (err: any) {
+  } catch (err) {
     return response.status(500).json({ message: 'Internal Server error.' })
   }
 }
