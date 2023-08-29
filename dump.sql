@@ -10,3 +10,16 @@ CREATE TABLE products (
   description TEXT NOT NULL,
   price INT NOT NULL
 );
+
+CREATE TABLE orders (
+	id SERIAL PRIMARY KEY,
+  order_id TEXT,
+  user_id INT REFERENCES users(id),
+  value INT
+);
+
+CREATE TABLE orders_items (
+	id SERIAL PRIMARY KEY,
+  product_id INT,
+  user_id INT REFERENCES users(id)
+);

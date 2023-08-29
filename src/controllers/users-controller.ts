@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import bcrypt from 'bcrypt'
 import { z } from 'zod'
 import { pool } from '../lib/database'
-import { User } from '../@types'
+import { User } from '../@types/user'
 
 const userSchema = z.object({
   name: z.string(),

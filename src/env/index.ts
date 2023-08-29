@@ -12,6 +12,8 @@ if (process.env.NODE_ENV === 'test') {
 
 const envSchema = z.object({
   PORT: z.coerce.number().default(3333),
+  JWT_SECRET: z.string(),
+  STRIPE_SECRET_KEY: z.string(),
   PGHOST: z.string(),
   PGPORT: z.coerce.number(),
   PGUSER: z.string(),

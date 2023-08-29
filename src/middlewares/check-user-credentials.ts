@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from 'express'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 import { env } from '../env'
 import { pool } from '../lib/database'
-import { DecodeResult } from '../@types'
 
 export async function checkUserCredentials(
   request: Request,
@@ -38,7 +37,7 @@ export async function checkUserCredentials(
 
     const user = await pool.query(query, [id])
 
-    response.locals.user = user.rows[0]
+    request.user = user.rows[0]
 
     return next()
   } catch (err: any) {

@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import { pool } from '../lib/database'
 import { env } from '../env'
-import { User } from '../@types'
+import { User } from '../@types/user'
 
 export async function auth(request: Request, response: Response) {
   const authSchema = z.object({
